@@ -14,5 +14,8 @@
     "lodash.merge": "^4.6.2",
     "lodash.omit": "^4.5.0",
     "util-promisify": "^2.1.0"
+  },
+  "devDependencies": {
+    "serverless-artillery": "^0.4.7"
   }
 }
