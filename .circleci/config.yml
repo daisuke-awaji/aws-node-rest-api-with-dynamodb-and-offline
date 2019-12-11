@@ -24,19 +24,19 @@ jobs:
   loadtest:
     docker:
       - image: circleci/node:7.10
-    working_directory: ~/repo
+    working_directory: ~/repo/loadtester
     steps:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "loadtester/package.json" }}
+            - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
       - run: cd loadtester
       - run: npm install
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "loadtester/package.json" }}
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run generate:senario
       - run: npm run loadtest
 
