@@ -18,6 +18,7 @@ custom:
 provider:
   name: aws
   runtime: nodejs8.10
+  region: ap-northeast-1
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
   iamRoleStatements:
@@ -75,16 +76,13 @@ functions:
 resources:
   Resources:
     TodosDynamoDbTable:
-      Type: 'AWS::DynamoDB::Table'
-      DeletionPolicy: Retain
+      Type: "AWS::DynamoDB::Table"
       Properties:
         AttributeDefinitions:
-          -
-            AttributeName: id
+          - AttributeName: id
             AttributeType: S
         KeySchema:
-          -
-            AttributeName: id
+          - AttributeName: id
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.DYNAMODB_TABLE}

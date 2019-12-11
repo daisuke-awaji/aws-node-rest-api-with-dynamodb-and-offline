@@ -1,0 +1,27 @@
+config:
+  target: https://35vbyy1dxd.execute-api.ap-northeast-1.amazonaws.com/dev
+  phases:
+    - duration: 10
+      arrivalRate: 10
+scenarios:
+  - flow:
+      - post:
+          url: /todos
+          json:
+            text: "my todo"
+          capture:
+            json: "$.id"
+            as: "id"
+      - get:
+          url: /todos
+      - get:
+          url: /todos/{{ id }}
+      - put:
+          url: /todos/{{ id }}
+          json:
+            text: "my todo finished"
+            checked: true
+      - delete:
+          url: /todos/{{ id }}
+          json:
+            id: { { id } }
