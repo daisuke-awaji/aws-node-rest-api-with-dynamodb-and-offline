@@ -21,15 +21,15 @@ function generateScript() {
   const script = yaml.safeLoad(fs.readFileSync("./script.yml", "utf-8"));
   const phases = {
     min: 1,
-    max: 50
+    max: 10
   };
   const duration = {
     min: 10,
-    max: 100
+    max: 60
   };
   const arrivalRate = {
     min: 10,
-    max: 10000
+    max: 100
   };
   script.config.phases = generatePhases(phases, duration, arrivalRate);
   fs.writeFileSync("./script.yml", yaml.safeDump(script));
