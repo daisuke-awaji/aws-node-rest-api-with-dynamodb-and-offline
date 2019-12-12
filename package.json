@@ -9,12 +9,14 @@
     "deploy:stg": "sls deploy --stage dev"
   },
   "dependencies": {
+    "aws-xray-sdk": "^2.5.0",
     "uuid": "^2.0.3"
   },
   "devDependencies": {
-    "aws-sdk": "^2.12.0",
+    "aws-sdk": "^2.588.0",
     "serverless": "^1.59.3",
     "serverless-dynamodb-local": "^0.2.18",
-    "serverless-offline": "^3.8.3"
+    "serverless-offline": "^3.8.3",
+    "serverless-plugin-tracing": "^2.0.0"
   }
 }
